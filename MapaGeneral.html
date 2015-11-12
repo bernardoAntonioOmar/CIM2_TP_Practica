@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #map { height: 100%; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script type="text/javascript">
+
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.7261029, lng: -58.2204383},
+                zoom: 15
+            });
+
+            var trafficLayer = new google.maps.TrafficLayer();
+            trafficLayer.setMap(map);
+
+            var marker = new google.maps.Marker({
+                position: {lat: -34.727990, lng: -58.221855},
+                map: map,
+                icon: 'images/photo_drone-128-mini.png',
+                title: 'Dron1'
+            });
+            var marker2 = new google.maps.Marker({
+                position: {lat: -34.730953, lng: -58.218464},
+                map: map,
+                icon: 'images/photo_drone-128-mini.png',
+                title: 'Dron2'
+            });
+            var contentString = '<div>Bateria: 90%</div>';
+            var contentString2 = '<div>Bateria: 70%</div>';
+            
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            marker.addListener('click', function() {
+                infowindow.setContent(contentString);
+                infowindow.open(map, marker);
+            });
+            marker2.addListener('click', function() {
+                infowindow.setContent(contentString2);
+                infowindow.open(map, marker2);
+            });
+        }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmI1IodBKlDFT6vRosDoIU5rLyAYRAoos&callback=initMap">
+    </script>
+</body>
+</html>
