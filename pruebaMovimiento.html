@@ -49,6 +49,11 @@ body{height:100%;margin:0px;font-family: Helvetica,Arial;}
   endLoc[2] = 'wilde, buenos aires';
   endLoc[3] = 'capital federal, buenos aires';
 
+  var batery = new Array();
+  batery[0] = '80 %';
+  batery[1] = '50 %';
+  batery[2] = '20 %';
+  batery[3] = '95 %';
 
   var Colors = ["#FF0000", "#00FF00", "#0000FF"];
 
@@ -167,7 +172,7 @@ function setRoutes(){
                 startLocation[routeNum].latlng = legs[i].start_location;
                 startLocation[routeNum].address = legs[i].start_address;
                 // marker = google.maps.Marker({map:map,position: startLocation.latlng});
-                marker[routeNum] = createMarker(legs[i].start_location,"start",legs[i].start_address,"green");
+                marker[routeNum] = createMarker(legs[i].start_location,"batería",batery[i],"green");
               }
               endLocation[routeNum].latlng = legs[i].end_location;
               endLocation[routeNum].address = legs[i].end_address;
